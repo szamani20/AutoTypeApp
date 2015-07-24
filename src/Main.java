@@ -122,6 +122,18 @@ public class Main extends Application {
                         robot.keyRelease(KeyEvent.VK_SHIFT);
                         break;
 
+                    case KeyEvent.VK_GREATER:
+                        robot.keyPress(KeyEvent.VK_SHIFT);
+                        robot.keyPress(KeyEvent.VK_PERIOD);
+                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                        break;
+
+                    case KeyEvent.VK_LESS:
+                        robot.keyPress(KeyEvent.VK_SHIFT);
+                        robot.keyPress(KeyEvent.VK_COMMA);
+                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                        break;
+
                     default:
                         robot.keyPress(keyInput[i]);
                 }
@@ -310,6 +322,12 @@ public class Main extends Application {
                     break;
                 case "#":
                     keyInput[i] = KeyEvent.VK_NUMBER_SIGN;
+                    break;
+                case "<":
+                    keyInput[i] = KeyEvent.VK_GREATER;
+                    break;
+                case ">":
+                    keyInput[i] = KeyEvent.VK_LESS;
                     break;
                 case "@":
                     keyInput[i] = KeyEvent.VK_AT;
