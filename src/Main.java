@@ -1,12 +1,13 @@
+package com.company;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -63,22 +64,67 @@ public class Main extends Application {
             }
         });
 
-            group.getChildren().addAll(text, textLabel, numberText,
-                    numberLabel, button, caution, imageView);
+        group.getChildren().addAll(text, textLabel, numberText,
+                numberLabel, button, caution);
 
-            stage.setScene(scene);
-			stage.setTitle("Auto Type App");
-            stage.setWidth(600);
-            stage.setHeight(330);
-            stage.setResizable(false);
-            stage.show();
-        }
+        stage.setScene(scene);
+        stage.setTitle("Auto Type App");
+        stage.setWidth(600);
+        stage.setHeight(330);
+        stage.setResizable(false);
+        stage.show();
+    }
 
     private void doType(int length) {
         for (int j = 0; j < amount; ++j)
             for (int i = 0; i <= length; i++) {
                 robot.delay(10);
-                robot.keyPress(keyInput[i]);
+                switch (keyInput[i]) {
+                    case KeyEvent.VK_COLON:
+                        robot.keyPress(KeyEvent.VK_SHIFT);
+                        robot.keyPress(KeyEvent.VK_SEMICOLON);
+                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                        break;
+
+                    case KeyEvent.VK_UNDERSCORE:
+                        robot.keyPress(KeyEvent.VK_SHIFT);
+                        robot.keyPress(KeyEvent.VK_MINUS);
+                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                        break;
+
+                    case KeyEvent.VK_LEFT_PARENTHESIS:
+                        robot.keyPress(KeyEvent.VK_SHIFT);
+                        robot.keyPress(KeyEvent.VK_9);
+                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                        break;
+
+                    case KeyEvent.VK_RIGHT_PARENTHESIS:
+                        robot.keyPress(KeyEvent.VK_SHIFT);
+                        robot.keyPress(KeyEvent.VK_0);
+                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                        break;
+
+                    case KeyEvent.VK_NUMBER_SIGN:
+                        robot.keyPress(KeyEvent.VK_SHIFT);
+                        robot.keyPress(KeyEvent.VK_3);
+                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                        break;
+
+                    case KeyEvent.VK_AT:
+                        robot.keyPress(KeyEvent.VK_SHIFT);
+                        robot.keyPress(KeyEvent.VK_2);
+                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                        break;
+
+                    case KeyEvent.VK_EXCLAMATION_MARK:
+                        robot.keyPress(KeyEvent.VK_SHIFT);
+                        robot.keyPress(KeyEvent.VK_1);
+                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                        break;
+
+                    default:
+                        robot.keyPress(keyInput[i]);
+                }
             }
     }
 
